@@ -117,31 +117,44 @@ const data = [
 
 const articles = document.querySelector('.articles');
 
-data.forEach(d => {
-  console.log('creating panel:', d.title);
-  articles.appendChild(createPanel(d.title, d.date, d.firstParagraph, d.secondParagraph, d.thirdParagraph));
+data.forEach(para => {
+  console.log('creating panel:', para.title);
+  articles.appendChild(articlePanels(para.title, para.date, para.firstParagraph, para.secondParagraph, para.thirdParagraph));
 });
 
-function articlePanels() {
+function articlePanels(title, date, one, two, three) {
   // Define New Elements
-  const article = document.createElement('div');
+  const articleContent = document.createElement('div');
   const articleTitle = document.createElement('h2');
-  const date = document.createElement('p');
+  const articleDate = document.createElement('p');
   const paraOne = document.createElement('p');
   const paraTwo = document.createElement('p');
   const paraThree = document.createElement('p');
   const expandButton = document.createElement('span');
 
   // Setup Structure of Elements
-  article.appendChild(articleTitle);
-  article.appendChild(date);
-  article.appendChild(paraOne);
-  article.appendChild(paraTwo);
-  article.appendChild(paraThree);
-  article.appendChild(expandButton);
+  articleContent.appendChild(articleTitle);
+  articleContent.appendChild(articleDate);
+  articleContent.appendChild(paraOne);
+  articleContent.appendChild(paraTwo);
+  articleContent.appendChild(paraThree);
+  articleContent.appendChild(expandButton);
 
   // Set Class Names
-  
+  articleContent.classList.add('article');
+  articleDate.classList.add('date');
+  expandButton.classList.add('expandButton');
+
+  // Set Text Content
+  articleTitle.textContent = title;
+  articleDate.textContent = date;
+  paraOne.textContent = firstParagraph;
+  paraTwo.textContent = secondParagraph;
+  paraThree.textContent = thirdParagraph;
+  expandButton.textContent = 'Open';
+
+  // Button Events
 
 
+  return article;
 }
