@@ -112,3 +112,36 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
 
 */
+
+
+
+const articles = document.querySelector('.articles');
+
+data.forEach(d => {
+  console.log('creating panel:', d.title);
+  articles.appendChild(createPanel(d.title, d.date, d.firstParagraph, d.secondParagraph, d.thirdParagraph));
+});
+
+function articlePanels() {
+  // Define New Elements
+  const article = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const date = document.createElement('p');
+  const paraOne = document.createElement('p');
+  const paraTwo = document.createElement('p');
+  const paraThree = document.createElement('p');
+  const expandButton = document.createElement('span');
+
+  // Setup Structure of Elements
+  article.appendChild(articleTitle);
+  article.appendChild(date);
+  article.appendChild(paraOne);
+  article.appendChild(paraTwo);
+  article.appendChild(paraThree);
+  article.appendChild(expandButton);
+
+  // Set Class Names
+  
+
+
+}
