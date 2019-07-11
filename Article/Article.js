@@ -85,6 +85,22 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {  
+    title: 'Why Won\'t My Airtable Load?',
+    date: 'Jul 10st, 2019',
+    firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
+          hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
+          Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
+
+    secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
+          hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+          hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+          hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+    thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+          Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
 ];
 
@@ -122,7 +138,7 @@ data.forEach(para => {
   articles.appendChild(articlePanels(para.title, para.date, para.firstParagraph, para.secondParagraph, para.thirdParagraph));
 });
 
-function articlePanels(title, date, one, two, three) {
+function articlePanels(title, date, firstParagraph, secondParagraph, thirdParagraph) {
   // Define New Elements
   const articleContent = document.createElement('div');
   const articleTitle = document.createElement('h2');
@@ -146,15 +162,18 @@ function articlePanels(title, date, one, two, three) {
   expandButton.classList.add('expandButton');
 
   // Set Text Content
-  articleTitle.textContent = title;
-  articleDate.textContent = date;
-  paraOne.textContent = firstParagraph;
-  paraTwo.textContent = secondParagraph;
-  paraThree.textContent = thirdParagraph;
-  expandButton.textContent = 'Open';
+  articleTitle.textContent = title
+  articleDate.textContent = date
+  paraOne.textContent = firstParagraph
+  paraTwo.textContent = secondParagraph
+  paraThree.textContent = thirdParagraph
+  expandButton.textContent = 'Open'
 
   // Button Events
+  expandButton.addEventListener('click', event => {
+    articleContent.classList.toggle('article-open');
+  });
 
 
-  return article;
+  return articleContent;
 }
